@@ -829,9 +829,7 @@ function App() {
               </a>
             </div>
           </div>
-          <div className="footer-bottom">
-            <p>&copy; 2024 Jomari Francisco. All rights reserved.</p>
-          </div>
+          
         </div>
       </footer>
 
