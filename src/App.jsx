@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Instagram, Facebook, FileText, Download, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Instagram, Facebook, FileText, Download, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, GraduationCap, Calendar, MapPin, Award } from 'lucide-react'
 import "./App.css"
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
   const [activeSection, setActiveSection] = useState("home")
   const [selectedCertificate, setSelectedCertificate] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isEducationModalOpen, setIsEducationModalOpen] = useState(false)
   const [imageZoom, setImageZoom] = useState(1)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
@@ -40,18 +41,18 @@ function App() {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in')
+          entry.target.classList.add("animate-in")
         }
       })
     }, observerOptions)
 
-    const sections = document.querySelectorAll('section')
+    const sections = document.querySelectorAll("section")
     sections.forEach((section) => observer.observe(section))
 
     return () => observer.disconnect()
@@ -79,6 +80,16 @@ function App() {
     document.body.style.overflow = "unset"
   }
 
+  const openEducationModal = () => {
+    setIsEducationModalOpen(true)
+    document.body.style.overflow = "hidden"
+  }
+
+  const closeEducationModal = () => {
+    setIsEducationModalOpen(false)
+    document.body.style.overflow = "unset"
+  }
+
   const handleZoomIn = () => {
     setImageZoom((prev) => Math.min(prev + 0.25, 3))
   }
@@ -86,6 +97,46 @@ function App() {
   const handleZoomOut = () => {
     setImageZoom((prev) => Math.max(prev - 0.25, 0.5))
   }
+
+  const education = [
+    {
+      degree: "Bachelor of Science in Information Technology",
+      institution: "Western Mindanao State University",
+      location: "Zamboanga City, Philippines",
+      period: "2021 - 2025",
+      status: "Graduate",
+      description: "Focused on mathematics, science, and technology subjects, building a solid foundation for further studies in Information Technology.",
+      achievements: [
+        "GWA: 2.0609",
+      
+      ],
+    },
+    {
+      degree: "Senior High School - Humanities and Social Science",
+      institution: "Saint Joseph Foundation Incorporated",
+      location: "Zamboanga City, Philippines",
+      period: "2019 - 2021",
+      status: "Graduate",
+      description: "Focused on humanities, social sciences, and communication subjects, developing strong critical thinking and interpersonal skills.",
+      achievements: [
+        "With Honors",
+      
+      ],
+    },
+
+    {
+      degree: "Junior High School",
+      institution: "Zamboanga National High School - WEST",
+      location: "Zamboanga City, Philippines",
+      period: "2015 - 2019",
+      status: "Graduate",
+      description: "Established a strong academic foundation through core subjects in mathematics, science, language, and social studies during Junior High School.",
+      achievements: [
+        "N/A",
+    
+      ],
+    },
+  ]
 
   const projects = [
     {
@@ -338,7 +389,6 @@ function App() {
       pdfUrl: "/Certificates/Introduction_to_Selenium_8264793.pdf",
       thumbnail: "/Certificates/Images/Introduction_to_Selenium_8264793.png",
     },
-    
   ]
 
   // Carousel functionality
@@ -511,6 +561,11 @@ function App() {
                   demonstrated my ability to take initiative, manage responsibilities, and deliver a fully functional
                   solution independently.
                 </p>
+                <div className="about-actions">
+                  <button className="btn education-btn" onClick={openEducationModal}>
+                    View Education
+                  </button>
+                </div>
                 <div className="stats">
                   <div className="stat">
                     <h3>3</h3>
@@ -553,7 +608,7 @@ function App() {
           <div className="container">
             <h2>Certificates & Achievements</h2>
             <div className="certificates-carousel-container">
-              <div 
+              <div
                 className="certificates-carousel"
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
@@ -561,9 +616,9 @@ function App() {
                 <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
                   <ChevronLeft size={24} />
                 </button>
-                
+
                 <div className="certificates-slider">
-                  <div 
+                  <div
                     className="certificates-track"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                   >
@@ -572,9 +627,9 @@ function App() {
                         {certificates
                           .slice(slideIndex * certificatesPerSlide, (slideIndex + 1) * certificatesPerSlide)
                           .map((certificate, index) => (
-                            <div 
-                              key={index} 
-                              className="certificate-card carousel-card" 
+                            <div
+                              key={index}
+                              className="certificate-card carousel-card"
                               onClick={() => openCertificateModal(certificate)}
                             >
                               <div className="certificate-image">
@@ -609,7 +664,7 @@ function App() {
                 {Array.from({ length: totalSlides }).map((_, index) => (
                   <button
                     key={index}
-                    className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                    className={`indicator ${index === currentSlide ? "active" : ""}`}
                     onClick={() => setCurrentSlide(index)}
                   />
                 ))}
@@ -617,11 +672,11 @@ function App() {
 
               {/* Progress Bar */}
               <div className="carousel-progress">
-                <div 
+                <div
                   className="progress-bar"
-                  style={{ 
+                  style={{
                     width: `${((currentSlide + 1) / totalSlides) * 100}%`,
-                    animationDuration: isAutoPlaying ? '4s' : 'none'
+                    animationDuration: isAutoPlaying ? "4s" : "none",
                   }}
                 />
               </div>
@@ -659,7 +714,8 @@ function App() {
               <div className="contact-info">
                 <h3>Let's work together</h3>
                 <p>
-                  I'm always open to new opportunities and exciting projects. If you have any questions or just want to connect, don't hesitate to reach out!
+                  I'm always open to new opportunities and exciting projects. If you have any questions or just want to
+                  connect, don't hesitate to reach out!
                 </p>
                 <div className="contact-details">
                   <div className="contact-item">
@@ -701,7 +757,12 @@ function App() {
             <a href="https://github.com/JomariFrancisco" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/jomari-francisco-b88558359/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/jomari-francisco-b88558359/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <Linkedin size={20} />
             </a>
             <a href="mailto:jzfdgreat@gmail.com" aria-label="Email">
@@ -752,6 +813,65 @@ function App() {
                   <Download size={16} />
                   Download PDF
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Education Modal */}
+      {isEducationModalOpen && (
+        <div className="modal-overlay" onClick={closeEducationModal}>
+          <div className="education-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>
+                
+                Educational Background
+              </h3>
+              <button className="modal-close" onClick={closeEducationModal}>
+                <X size={20} />
+              </button>
+            </div>
+            <div className="education-modal-body">
+              <div className="education-timeline">
+                {education.map((edu, index) => (
+                  <div key={index} className="education-item">
+                    <div className="education-marker">
+                      <div className="education-dot"></div>
+                      {index < education.length - 1 && <div className="education-line"></div>}
+                    </div>
+                    <div className="education-content">
+                      <div className="education-header">
+                        <h4>{edu.degree}</h4>
+                        <span className="education-status">{edu.status}</span>
+                      </div>
+                      <div className="education-institution">
+                        <h5>{edu.institution}</h5>
+                        <div className="education-meta">
+                          <span className="education-location">
+                            <MapPin size={14} />
+                            {edu.location}
+                          </span>
+                          <span className="education-period">
+                            
+                            {edu.period}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="education-description">{edu.description}</p>
+                      <div className="education-achievements">
+                        <h6>
+                          Key Achievements:
+                        </h6>
+                        <ul>
+                          {edu.achievements.map((achievement, achIndex) => (
+                            <li key={achIndex}>{achievement}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
