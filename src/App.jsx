@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Instagram, Facebook, FileText, Download, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, GraduationCap, Calendar, MapPin, Award } from 'lucide-react'
+import { Mail, Phone, Github, Linkedin, ExternalLink, Menu, X, Instagram, Facebook, FileText, Download, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, GraduationCap, Calendar, MapPin, Award, Code, Briefcase, Star, Users, Target, Zap } from 'lucide-react'
 import "./App.css"
 
 function App() {
@@ -105,11 +105,9 @@ function App() {
       location: "Zamboanga City, Philippines",
       period: "2021 - 2025",
       status: "Graduate",
-      description: "Focused on mathematics, science, and technology subjects, building a solid foundation for further studies in Information Technology.",
-      achievements: [
-        "GWA: 2.0609",
-      
-      ],
+      description:
+        "Focused on mathematics, science, and technology subjects, building a solid foundation for further studies in Information Technology.",
+      achievements: ["GWA: 2.0609"],
     },
     {
       degree: "Senior High School - Humanities and Social Science",
@@ -117,24 +115,19 @@ function App() {
       location: "Zamboanga City, Philippines",
       period: "2019 - 2021",
       status: "Graduate",
-      description: "Focused on humanities, social sciences, and communication subjects, developing strong critical thinking and interpersonal skills.",
-      achievements: [
-        "With Honors",
-      
-      ],
+      description:
+        "Focused on humanities, social sciences, and communication subjects, developing strong critical thinking and interpersonal skills.",
+      achievements: ["With Honors (90%)"],
     },
-
     {
       degree: "Junior High School",
       institution: "Zamboanga National High School - WEST",
       location: "Zamboanga City, Philippines",
       period: "2015 - 2019",
       status: "Graduate",
-      description: "Established a strong academic foundation through core subjects in mathematics, science, language, and social studies during Junior High School.",
-      achievements: [
-        "N/A",
-    
-      ],
+      description:
+        "Established a strong academic foundation through core subjects in mathematics, science, language, and social studies during Junior High School.",
+      achievements: ["N/A"],
     },
   ]
 
@@ -145,6 +138,8 @@ function App() {
         " A smart livestock monitoring system designed to enhance poultry health and welfare through real-time detection and data tracking",
       technologies: ["React", "Node.js", "MongoDB", "Arduino", "Raspberry Pi", "Figma"],
       image: "https://via.placeholder.com/300x200/ff014f/ffffff?text=PoultryCare+System",
+      category: "IoT Development",
+      status: "Completed",
     },
     {
       title: "Google Developer Students Club - Event Management System (EMS).",
@@ -152,6 +147,8 @@ function App() {
         " GDSC EMS is a web-based system designed to streamline event planning and participation for Google Developer Student Clubs",
       technologies: ["HTML", "CSS", "Node.js", "MongoDB", "Node.js", "Figma"],
       image: "https://via.placeholder.com/300x200/ff014f/ffffff?text=GDSC+EMS",
+      category: "Web Development",
+      status: "Completed",
     },
     {
       title: "OTOP E-commerce",
@@ -159,15 +156,17 @@ function App() {
         " OTOP is a digital platform that promotes local products from various towns by connecting small businesses to a wider market. It allows sellers to showcase their products, manage inventories, and receive orders, while users can browse and support local craftsmanship through an easy-to-use and responsive web interface.",
       technologies: ["HTML", "CSS", "Javascript", "MySql", "Figma"],
       image: "https://via.placeholder.com/300x200/ff014f/ffffff?text=OTOP+E-commerce",
+      category: "E-commerce",
+      status: "Completed",
     },
   ]
 
   const skills = [
-    { category: "Frontend", items: ["React", "HTML", "CSS", "Javascript"] },
-    { category: "Backend", items: ["REST APIs", "Node.js", "Python", "Flask"] },
-    { category: "Database ", items: ["MongoDB", "MySQL"] },
-    { category: "Tools", items: ["Git", "Figma", "VS Code"] },
-    { category: "Internet of Things", items: ["Arduino", "RaspberryPi"] },
+    { category: "Frontend", items: ["React", "HTML", "CSS", "Javascript"], icon: <Code size={24} /> },
+    { category: "Backend", items: ["REST APIs", "Node.js", "Python", "Flask"], icon: <Briefcase size={24} /> },
+    { category: "Database ", items: ["MongoDB", "MySQL"], icon: <Target size={24} /> },
+    { category: "Tools", items: ["Git", "Figma", "VS Code"], icon: <Zap size={24} /> },
+    { category: "Internet of Things", items: ["Arduino", "RaspberryPi"], icon: <Star size={24} /> },
   ]
 
   // Certificates with your original file names
@@ -541,7 +540,10 @@ function App() {
             </div>
           </div>
           <div className="hero-image">
-            <img src="Profile.jpg" alt="Profile" />
+            <div className="hero-image-wrapper">
+              <img src="Profile.jpg" alt="Profile" />
+              <div className="hero-image-glow"></div>
+            </div>
           </div>
         </section>
 
@@ -550,35 +552,51 @@ function App() {
             <h2>About Me</h2>
             <div className="about-content">
               <div className="about-text">
-                <p>
-                  I'm Jomari Francisco, an IT graduate from Western Mindanao State University. I specialize in IoT,
-                  mobile/web development, and UI/UX design. I'm passionate about building practical tech solutions,
-                  always eager to learn, and ready to take on new challenges in the tech industry.
-                </p>
-                <p>
-                  As the project manager and sole developer of our capstone project, I led the end-to-end development of
-                  an IoT-powered poultry monitoring system with computer vision and mobile integration. This experience
-                  demonstrated my ability to take initiative, manage responsibilities, and deliver a fully functional
-                  solution independently.
-                </p>
+                <div className="about-intro">
+                  <div className="about-badge">
+                    <Users size={20} />
+                    <span>IT Professional</span>
+                  </div>
+                  <p>
+                    I'm Jomari Francisco, an IT graduate from Western Mindanao State University. I specialize in IoT,
+                    mobile/web development, and UI/UX design. I'm passionate about building practical tech solutions,
+                    always eager to learn, and ready to take on new challenges in the tech industry.
+                  </p>
+                  <p>
+                    As the project manager and sole developer of our capstone project, I led the end-to-end development
+                    of an IoT-powered poultry monitoring system with computer vision and mobile integration. This
+                    experience demonstrated my ability to take initiative, manage responsibilities, and deliver a fully
+                    functional solution independently.
+                  </p>
+                </div>
                 <div className="about-actions">
                   <button className="btn education-btn" onClick={openEducationModal}>
+                    <GraduationCap size={20} />
                     View Education
                   </button>
                 </div>
                 <div className="stats">
                   <div className="stat">
+                    <div className="stat-icon">
+                      <Briefcase size={24} />
+                    </div>
                     <h3>3</h3>
                     <p>Projects Completed</p>
                   </div>
                   <div className="stat">
+                    <div className="stat-icon">
+                      <Award size={24} />
+                    </div>
                     <h3>24</h3>
                     <p>Certificates</p>
                   </div>
                 </div>
               </div>
               <div className="about-image">
-                <img src="AboutMeProf.jpg" alt="About me" />
+                <div className="about-image-wrapper">
+                  <img src="AboutMeProf.jpg" alt="About me" />
+                  <div className="about-image-decoration"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -587,9 +605,16 @@ function App() {
         <section id="skills" className="skills section-animate">
           <div className="container">
             <h2>Skills & Technologies</h2>
+            <div className="skills-intro">
+              <p>
+                Passionate about creating innovative solutions with cutting-edge technologies. Here are the tools and
+                technologies I work with:
+              </p>
+            </div>
             <div className="skills-grid">
               {skills.map((skillGroup, index) => (
                 <div key={index} className="skill-category" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="skill-icon-wrapper">{skillGroup.icon}</div>
                   <h3>{skillGroup.category}</h3>
                   <div className="skill-items">
                     {skillGroup.items.map((skill, skillIndex) => (
@@ -607,6 +632,11 @@ function App() {
         <section id="certificates" className="certificates section-animate">
           <div className="container">
             <h2>Certificates & Achievements</h2>
+            <div className="certificates-intro">
+              <p>
+                Continuous learning and professional development through various certifications and training programs.
+              </p>
+            </div>
             <div className="certificates-carousel-container">
               <div
                 className="certificates-carousel"
@@ -618,10 +648,7 @@ function App() {
                 </button>
 
                 <div className="certificates-slider">
-                  <div
-                    className="certificates-track"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
+                  <div className="certificates-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                       <div key={slideIndex} className="certificates-slide">
                         {certificates
@@ -687,9 +714,18 @@ function App() {
         <section id="projects" className="projects section-animate">
           <div className="container">
             <h2>Featured Projects</h2>
+            <div className="projects-intro">
+              <p>
+                Showcasing innovative solutions and technical expertise through real-world projects and applications.
+              </p>
+            </div>
             <div className="projects-grid">
               {projects.map((project, index) => (
                 <div key={index} className="project-card" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="project-header">
+                    <div className="project-category">{project.category}</div>
+                    <div className="project-status">{project.status}</div>
+                  </div>
                   <div className="project-content">
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
@@ -701,6 +737,9 @@ function App() {
                       ))}
                     </div>
                   </div>
+                  <div className="project-footer">
+                    
+                  </div>
                 </div>
               ))}
             </div>
@@ -710,6 +749,9 @@ function App() {
         <section id="contact" className="contact section-animate">
           <div className="container">
             <h2>Get In Touch</h2>
+            <div className="contact-intro">
+              <p>Ready to collaborate on your next project? Let's create something amazing together!</p>
+            </div>
             <div className="contact-content">
               <div className="contact-info">
                 <h3>Let's work together</h3>
@@ -719,21 +761,33 @@ function App() {
                 </p>
                 <div className="contact-details">
                   <div className="contact-item">
-                    <Mail size={20} />
-                    <span>jzfdgreat@gmail.com</span>
+                    <div className="contact-icon">
+                      <Mail size={20} />
+                    </div>
+                    <div className="contact-text">
+                      <span className="contact-label">Email</span>
+                      <span>jzfdgreat@gmail.com</span>
+                    </div>
                   </div>
                   <div className="contact-item">
-                    <Phone size={20} />
-                    <span>+63 956 501 8006</span>
+                    <div className="contact-icon">
+                      <Phone size={20} />
+                    </div>
+                    <div className="contact-text">
+                      <span className="contact-label">Phone</span>
+                      <span>+63 956 501 8006</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input type="text" placeholder="Your Name" required />
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Your Email" required />
+                <div className="form-row">
+                  <div className="form-group">
+                    <input type="text" placeholder="Your Name" required />
+                  </div>
+                  <div className="form-group">
+                    <input type="email" placeholder="Your Email" required />
+                  </div>
                 </div>
                 <div className="form-group">
                   <input type="text" placeholder="Subject" required />
@@ -742,6 +796,7 @@ function App() {
                   <textarea placeholder="Your Message" rows={5} required></textarea>
                 </div>
                 <button type="submit" className="btn primary">
+                  <Mail size={16} />
                   Send Message
                 </button>
               </form>
@@ -752,22 +807,30 @@ function App() {
 
       <footer className="footer">
         <div className="container">
-          <p> Western Mindanao State University</p>
-          <div className="footer-links">
-            <a href="https://github.com/JomariFrancisco" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jomari-francisco-b88558359/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a href="mailto:jzfdgreat@gmail.com" aria-label="Email">
-              <Mail size={20} />
-            </a>
+          <div className="footer-content">
+            <div className="footer-info">
+              <h3>JZF</h3>
+              <p>Western Mindanao State University</p>
+            </div>
+            <div className="footer-links">
+              <a href="https://github.com/JomariFrancisco" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <Github size={20} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jomari-francisco-b88558359/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a href="mailto:jzfdgreat@gmail.com" aria-label="Email">
+                <Mail size={20} />
+              </a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2024 Jomari Francisco. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -825,7 +888,7 @@ function App() {
           <div className="education-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>
-                
+                <GraduationCap size={24} />
                 Educational Background
               </h3>
               <button className="modal-close" onClick={closeEducationModal}>
@@ -853,7 +916,7 @@ function App() {
                             {edu.location}
                           </span>
                           <span className="education-period">
-                            
+                            <Calendar size={14} />
                             {edu.period}
                           </span>
                         </div>
@@ -861,6 +924,7 @@ function App() {
                       <p className="education-description">{edu.description}</p>
                       <div className="education-achievements">
                         <h6>
+                          <Award size={16} />
                           Key Achievements:
                         </h6>
                         <ul>
